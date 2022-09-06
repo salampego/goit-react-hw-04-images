@@ -22,21 +22,19 @@ export function App() {
     setLoading(true);
     ImagesAPI(searchQuery, page)
       .then(data => {
-        if (totalHits === 0) {
+        if (data.totalHits === 0) {
           setError(`images ${searchQuery} not found `);
           return;
+        } else {
+          setLoading(true);
+          setImageGallery(gallery => {
+            return [...gallery, ...data.hits];
+          });
+          setTotalHits(data.totalHits);
         }
-        setLoading(true);
-        setImageGallery(gallery => {
-          return [...gallery, ...data.hits];
-        });
-        setTotalHits(data.totalHits);
       })
       .catch(error => {
         setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
       });
   }, [searchQuery, page]);
 
@@ -46,6 +44,7 @@ export function App() {
     setImageGallery([]);
     setSearchQuery(value);
     setPage(1);
+    setTotalHits(null);
   };
 
   const onLoadMore = () => {
