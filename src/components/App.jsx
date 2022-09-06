@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './App.module.css';
 
 import { SearchBar } from './SearchBar/SearchBar';
@@ -13,7 +13,7 @@ export function App() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalHits, setTotalHits] = useState(null);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   useEffect(() => {
     if (!searchQuery) {
@@ -46,7 +46,6 @@ export function App() {
     setImageGallery([]);
     setSearchQuery(value);
     setPage(1);
-    setTotalHits(null);
   };
 
   const onLoadMore = () => {
