@@ -13,7 +13,7 @@ export function App() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalHits, setTotalHits] = useState(null);
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   useEffect(() => {
     if (!searchQuery) {
