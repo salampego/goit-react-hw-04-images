@@ -26,7 +26,7 @@ export function App() {
           setError(`images ${searchQuery} not found `);
           return;
         } else {
-          setLoading(true);
+          setLoading(false);
           setImageGallery(gallery => {
             return [...gallery, ...data.hits];
           });
